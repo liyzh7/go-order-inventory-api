@@ -1,0 +1,19 @@
+{
+  "captured_at_utc": "2026-10-17T03:17:16.9942817Z",
+  "os": "Microsoft Windows 11 家庭版 中文版",
+  "os_version": "10.0.26200",
+  "cpu": "AMD Ryzen 7 8845H w/ Radeon 780M Graphics",
+  "cores": 8,
+  "logical_processors": 16,
+  "physical_memory_bytes": 29860155392,
+  "available_memory_bytes": 11723534336,
+  "workspace_disk_free_bytes": 295480840192,
+  "go": "go version go1.27.2 windows/amd64",
+  "k6": "k6.exe v2.3.0 (commit/e088784614, go1.26.8, windows/amd64)",
+  "docker_engine": "14554849280 16 29.8.2",
+  "mysql_image": "container-registry.oracle.com/mysql/community-server@sha256:7dcc4add9183664de3a214daf85a50c3ba6cccfd7534f700b6561bf5b41885be",
+  "mysql_memory_limit": 2147483648,
+  "mysql_nano_cpus": 2000000000,
+  "tested_source": "80b57d86c0c7f08c65c2363bb676b1aea8a0e81e",
+  "performance_binary_sha256": "A9FCBED82A94A29DC05EBD702237618038CDE4BC179175ED68892CA787107334"
+}

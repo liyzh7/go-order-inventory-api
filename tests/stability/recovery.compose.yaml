@@ -1,0 +1,33 @@
+name: order-api-showcase-recovery
+services:
+  mysql:
+    image: container-registry.oracle.com/mysql/community-server@sha256:7dcc4add9183664de3a214daf85a50c3ba6cccfd7534f700b6561bf5b41885be
+    container_name: order-api-showcase-recovery-mysql
+    hostname: mysql-recovery
+    cpus: 2
+    mem_limit: 2g
+    pids_limit: 256
+    environment:
+      MYSQL_DATABASE: order_api_recovery
+      MYSQL_USER: recovery_app
+      MYSQL_PASSWORD: recovery-app-not-a-secret
+      MYSQL_ROOT_PASSWORD: recovery-root-not-a-secret
+      MYSQL_ROOT_HOST: "%"
+      TZ: UTC
+    command: ["--innodb-buffer-pool-size=268435456", "--innodb-redo-log-capacity=268435456", "--max-connections=60"]
+    volumes:
+      - recovery_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$${MYSQL_PASSWORD} mysql -h 127.0.0.1 -u $${MYSQL_USER} $${MYSQL_DATABASE} --batch --skip-column-names -e 'SELECT 1'"]
+      interval: 2s
+      timeout: 3s
+      retries: 40
+      start_period: 30s
+    logging:
+      options:
+        max-size: 10m
+        max-file: "2"
+    stop_grace_period: 15s
+volumes:
+  recovery_data:
+    name: order-api-showcase-recovery-mysql-data

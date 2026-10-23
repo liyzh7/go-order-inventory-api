@@ -1,0 +1,48 @@
+{
+  "source_commit": "047bd10a15e049954ba0afa78716bcdea73e5887",
+  "date": "2026-10-17",
+  "windows": {
+    "go_version": "1.27.2",
+    "gofmt": "passed",
+    "go_mod_verify": "passed",
+    "go_vet_all": "passed",
+    "go_test_count_1_all": "passed",
+    "environment_note": "Process-local GOPATH avoids an unrelated go.mod at the configured GOPATH root. Sandbox access to the external build cache required approved retries; no global environment was changed."
+  },
+  "linux": {
+    "entrypoint": "scripts/verify-ci-local.ps1",
+    "go_version": "1.27.2",
+    "gcc_version": "12.2.0",
+    "mysql_version": "8.4.12",
+    "gofmt_mod_verify_vet_unit": "passed",
+    "unit_race": "passed",
+    "mysql_integration": "passed",
+    "mysql_integration_seconds": 19.757,
+    "mysql_integration_race": "passed",
+    "mysql_integration_race_seconds": 27.494,
+    "migration_version": 6,
+    "residual_isolated_databases": 0,
+    "cleanup_cli_smoke_deleted_sessions": 0,
+    "log_ignored_path": ".tmp/stability/linux-verification.log",
+    "exit_code": 0
+  },
+  "recovery_suite": {
+    "passed": true,
+    "seconds": 64.063,
+    "real_process_and_container_experiments": true,
+    "race_instrumented": false,
+    "commit_acknowledgement_injection_passed": true,
+    "commit_acknowledgement_injection_seconds": 3.033,
+    "evidence": "recovery-summary.json"
+  },
+  "stability": {
+    "five_minute_scenarios_passed": 4,
+    "five_minute_source_commit": "80b57d86c0c7f08c65c2363bb676b1aea8a0e81e",
+    "final_source_ten_minute_hotspot_passed": true,
+    "ten_minute_requests_and_success": 30000,
+    "ten_minute_per_product_stock_mismatches": 0,
+    "ten_minute_evidence": "hotspot-10m-summary.json"
+  },
+  "github_actions_ran": false,
+  "git_push_performed": false
+}

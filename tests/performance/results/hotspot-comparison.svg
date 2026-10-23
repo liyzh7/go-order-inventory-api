@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="390" viewBox="0 0 920 390" role="img" aria-labelledby="title desc">
+  <title id="title">Single-hotspot SKU A/B comparison at target 200 requests per second</title>
+  <desc id="desc">Median of three runs. Higher throughput is better; lower latency and dropped iterations are better.</desc>
+  <rect width="920" height="390" fill="#ffffff"/>
+  <text x="40" y="42" font-family="Segoe UI,Arial" font-size="24" fill="#172033">Single-hotspot SKU: A/B median of 3 runs</text>
+  <text x="40" y="68" font-family="Segoe UI,Arial" font-size="14" fill="#556176">25 max VUs · target 200 req/s · 2s warm-up + 8s sample</text>
+  <g font-family="Segoe UI,Arial" font-size="14" fill="#172033">
+    <text x="40" y="120">Actual iterations/s</text><text x="40" y="210">HTTP P95 (ms)</text><text x="40" y="300">Dropped iterations</text>
+  </g>
+  <g fill="#8091a7"><rect x="220" y="96" width="262.82" height="24"/><rect x="220" y="186" width="399.6" height="24"/><rect x="220" y="276" width="368.2" height="24"/></g>
+  <g fill="#1677ff"><rect x="220" y="126" width="318.04" height="24"/><rect x="220" y="216" width="332.6" height="24"/><rect x="220" y="306" width="214.9" height="24"/></g>
+  <g font-family="Segoe UI,Arial" font-size="13" fill="#172033">
+    <text x="190" y="113" text-anchor="end">A</text><text x="190" y="143" text-anchor="end">B</text><text x="492.82" y="113">131.41</text><text x="548.04" y="143">159.02</text>
+    <text x="190" y="203" text-anchor="end">A</text><text x="190" y="233" text-anchor="end">B</text><text x="629.6" y="203">199.8</text><text x="562.6" y="233">166.3</text>
+    <text x="190" y="293" text-anchor="end">A</text><text x="190" y="323" text-anchor="end">B</text><text x="598.2" y="293">526</text><text x="444.9" y="323">307</text>
+  </g>
+  <text x="40" y="365" font-family="Segoe UI,Arial" font-size="12" fill="#68758a">A: original transaction order · B: item snapshots inserted before inventory locks</text>
+</svg>

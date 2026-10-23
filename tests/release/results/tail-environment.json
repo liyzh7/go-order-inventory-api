@@ -1,0 +1,15 @@
+{
+  "source_commit": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+  "app_binary_sha256": "B593DC4C67C19E24AC43F6A05A37D59B804079BE10C82080767040E91D4AD211",
+  "go": "go version go1.27.2 windows/amd64",
+  "powershell": "7.6.5",
+  "repeat_run_ids": [
+    "s11-hotspot-r1",
+    "s11-hotspot-r2"
+  ],
+  "max_vus": 25,
+  "target_rate": 50,
+  "formal_seconds": 600,
+  "app_source_unchanged_from": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+  "extra_mysql_observer": "r2 only, every 15 seconds, partial first minute; host wall time recorded; auxiliary not strict A/B"
+}

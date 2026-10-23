@@ -1,0 +1,51 @@
+{
+  "review_base": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+  "tested_source_snapshot_sha256": "af5e27ee16bd8eb73d65cfbbc04c940cde01df3b569cbccf991e46914a27cb53",
+  "native": {
+    "mod_verify": "passed: all modules verified",
+    "vet": "passed",
+    "unit": "passed",
+    "gofmt": "passed: no output"
+  },
+  "linux": {
+    "unit": "passed",
+    "integration_race_seconds": 24.28,
+    "unit_race": "passed",
+    "session_cleanup_cli_deleted": 0,
+    "go": "1.27.2",
+    "mysql_version": "8.4.12",
+    "assertion_redaction_test_invocations": 2,
+    "integration_seconds": 18.019,
+    "compiler": "GCC 12.2.0",
+    "migration_version": 6,
+    "residual_test_databases": 0
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "shellcheck_and_pyflakes": "not installed; external invocations disabled; workflow validation enabled",
+    "exit_code": 0
+  },
+  "cloud_ci": "not run; no push authorized",
+  "backup": "passed: backup-df75838683ce.json",
+  "windows_native_race": "not run: existing CGO/compiler limitation; Linux race passed",
+  "recovery": {
+    "report": "recovery-c86ec7ef1c8f.json",
+    "real_process_suite_seconds": 79.206,
+    "commit_injection_seconds": 2.87,
+    "passed": true,
+    "final_orders": 8,
+    "final_items": 9,
+    "stock": [
+      93,
+      199
+    ],
+    "invariant_violations": 0,
+    "dev_counts_and_inventory_unchanged": true
+  },
+  "licensing": {
+    "project": "MIT explicitly approved by user",
+    "declared_modules": 37,
+    "upstream_notice_files": 44,
+    "staged_byte_hashes": "verified"
+  }
+}

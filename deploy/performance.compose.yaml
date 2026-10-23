@@ -1,0 +1,28 @@
+name: order-api-showcase-perf
+
+services:
+  mysql:
+    image: container-registry.oracle.com/mysql/community-server@sha256:7dcc4add9183664de3a214daf85a50c3ba6cccfd7534f700b6561bf5b41885be
+    container_name: order-api-showcase-perf-mysql
+    environment:
+      MYSQL_DATABASE: order_api_perf_baseline
+      MYSQL_USER: order_perf
+      MYSQL_PASSWORD: perf-app-not-a-secret
+      MYSQL_ROOT_PASSWORD: perf-root-not-a-secret
+      MYSQL_ROOT_HOST: "%"
+      TZ: UTC
+    ports:
+      - "127.0.0.1:13308:3306"
+    volumes:
+      - order_api_perf_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=$${MYSQL_PASSWORD} mysql --protocol=tcp -h 127.0.0.1 -u $${MYSQL_USER} $${MYSQL_DATABASE} --batch --skip-column-names -e 'SELECT 1' | grep -qx 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 30s
+    stop_grace_period: 30s
+
+volumes:
+  order_api_perf_mysql_data:
+    name: order-api-showcase-perf-mysql-data

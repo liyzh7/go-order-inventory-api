@@ -1,0 +1,596 @@
+[
+  {
+    "run_id": "s11-hotspot-r1",
+    "source_commit": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+    "start_utc": "2026-10-17T04:33:11.8469987Z",
+    "finish_utc": "2026-10-17T04:43:13.6012918Z",
+    "wall_seconds": 601.7542931,
+    "formal_seconds": 600,
+    "warmup_seconds": 5,
+    "target_rate": 50,
+    "max_vus": 25,
+    "requests": 30001,
+    "success": 30001,
+    "rps": 49.99982522310352,
+    "p50_ms": 15.5559,
+    "p95_ms": 20.9091,
+    "p99_ms": 25.128,
+    "http_error_rate": 0,
+    "business_error_rate": 0,
+    "business_rejected": 0,
+    "dropped": 0,
+    "orders_delta": 30001,
+    "items_delta": 30001,
+    "stock_delta": -30001,
+    "per_product_stock_mismatches": 0,
+    "consistent": true,
+    "final": {
+      "Products": 1000,
+      "Users": 25,
+      "Sessions": 25,
+      "Orders": 30252,
+      "OrderItems": 30252,
+      "CreatedOrders": 30252,
+      "CancelledOrders": 0,
+      "inventory_units": 999969748,
+      "NegativeInventory": 0,
+      "AmountMismatches": 0,
+      "OrdersWithoutItems": 0,
+      "OrphanItems": 0,
+      "DuplicateIdempotency": 0,
+      "valid": true
+    },
+    "runtime_before": {
+      "captured_at_utc": "2026-10-17T04:33:11.8464123Z",
+      "runtime": {
+        "goroutines": 10,
+        "heap_alloc_bytes": 25554272,
+        "heap_in_use_bytes": 26730496,
+        "stack_in_use_bytes": 819200,
+        "sys_bytes": 38234360,
+        "num_gc": 1,
+        "pause_total_ns": 0
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 2,
+        "in_use": 0,
+        "idle": 2,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 0,
+        "max_lifetime_closed": 0
+      }
+    },
+    "runtime_end": {
+      "captured_at_utc": "2026-10-17T04:43:13.6020037Z",
+      "runtime": {
+        "goroutines": 18,
+        "heap_alloc_bytes": 5438920,
+        "heap_in_use_bytes": 7634944,
+        "stack_in_use_bytes": 950272,
+        "sys_bytes": 51742968,
+        "num_gc": 141,
+        "pause_total_ns": 4225500
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 10,
+        "in_use": 0,
+        "idle": 10,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 1,
+        "max_lifetime_closed": 4
+      }
+    },
+    "runtime_cooldown": {
+      "captured_at_utc": "2026-10-17T04:43:48.3699174Z",
+      "runtime": {
+        "goroutines": 18,
+        "heap_alloc_bytes": 11608264,
+        "heap_in_use_bytes": 13852672,
+        "stack_in_use_bytes": 950272,
+        "sys_bytes": 51742968,
+        "num_gc": 142,
+        "pause_total_ns": 4225500
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 10,
+        "in_use": 0,
+        "idle": 10,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 1,
+        "max_lifetime_closed": 4
+      }
+    },
+    "transactions": {
+      "enabled": true,
+      "reset_at_utc": "2026-10-17T04:33:11.1832102Z",
+      "captured_at_utc": "2026-10-17T04:43:13.6025071Z",
+      "series": [
+        {
+          "stage": "acquire_connection",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 48.2142,
+            "average_ms": 0.0016070864304523183,
+            "p50_ms": 0,
+            "p95_ms": 0,
+            "p99_ms": 0,
+            "max_ms": 0.7988
+          }
+        },
+        {
+          "stage": "begin_transaction",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 36255.5007,
+            "average_ms": 1.2084764074530847,
+            "p50_ms": 1.0684,
+            "p95_ms": 1.6096,
+            "p99_ms": 1.854,
+            "max_ms": 5.871
+          }
+        },
+        {
+          "stage": "commit",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 191355.7272,
+            "average_ms": 6.378311629612346,
+            "p50_ms": 5.7518,
+            "p95_ms": 10.5757,
+            "p99_ms": 13.8417,
+            "max_ms": 73.6549
+          }
+        },
+        {
+          "stage": "http_create_total",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 434636.5757,
+            "average_ms": 14.487402943235224,
+            "p50_ms": 13.6158,
+            "p95_ms": 18.783,
+            "p99_ms": 22.8471,
+            "max_ms": 197.7269
+          }
+        },
+        {
+          "stage": "idempotency_lookup",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 40218.516,
+            "average_ms": 1.340572514249525,
+            "p50_ms": 1.3954,
+            "p95_ms": 1.6445,
+            "p99_ms": 2.1349,
+            "max_ms": 5.4953
+          }
+        },
+        {
+          "stage": "inventory_update",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 45148.4734,
+            "average_ms": 1.504898950034999,
+            "p50_ms": 1.1232,
+            "p95_ms": 1.6635,
+            "p99_ms": 2.2808,
+            "max_ms": 173.2309
+          }
+        },
+        {
+          "stage": "order_header_insert",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 40144.0887,
+            "average_ms": 1.3380916869437685,
+            "p50_ms": 1.3644,
+            "p95_ms": 1.6545,
+            "p99_ms": 2.1463,
+            "max_ms": 6.0098
+          }
+        },
+        {
+          "stage": "order_item_insert",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 40038.0226,
+            "average_ms": 1.3345562681243957,
+            "p50_ms": 1.3248,
+            "p95_ms": 1.644,
+            "p99_ms": 2.1431,
+            "max_ms": 4.4975
+          }
+        },
+        {
+          "stage": "product_read",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 38476.4598,
+            "average_ms": 1.2825059098030065,
+            "p50_ms": 1.0728,
+            "p95_ms": 1.624,
+            "p99_ms": 2.1202,
+            "max_ms": 10.2128
+          }
+        },
+        {
+          "stage": "service_create_total",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 433065.6542,
+            "average_ms": 14.435040638645377,
+            "p50_ms": 13.5657,
+            "p95_ms": 18.7011,
+            "p99_ms": 22.84,
+            "max_ms": 197.7269
+          }
+        },
+        {
+          "stage": "transaction_attempt",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 432431.7,
+            "average_ms": 14.413909536348788,
+            "p50_ms": 13.5431,
+            "p95_ms": 18.6666,
+            "p99_ms": 22.8228,
+            "max_ms": 197.7269
+          }
+        },
+        {
+          "stage": "validation_and_hash",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 183.1331,
+            "average_ms": 0.006104233192226926,
+            "p50_ms": 0,
+            "p95_ms": 0,
+            "p99_ms": 0.5168,
+            "max_ms": 1.6454
+          }
+        }
+      ],
+      "recorder_overhead": {
+        "count": 100000,
+        "dropped_samples": 260012,
+        "total_ms": 90.4543,
+        "average_ms": 0.0009045430000000001,
+        "p50_ms": 0,
+        "p95_ms": 0,
+        "p99_ms": 0,
+        "max_ms": 3.0406
+      },
+      "nested_durations_note": "http, service, transaction, and SQL stage durations are nested; do not add overlapping totals"
+    },
+    "row_waits": 144,
+    "row_wait_ms": 5711,
+    "deadlocks": 0
+  },
+  {
+    "run_id": "s11-hotspot-r2",
+    "source_commit": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+    "start_utc": "2026-10-17T04:44:39.9065143Z",
+    "finish_utc": "2026-10-17T04:54:41.6964486Z",
+    "wall_seconds": 601.7899343,
+    "formal_seconds": 600,
+    "warmup_seconds": 5,
+    "target_rate": 50,
+    "max_vus": 25,
+    "requests": 30001,
+    "success": 30001,
+    "rps": 49.99979480768185,
+    "p50_ms": 15.1639,
+    "p95_ms": 20.781,
+    "p99_ms": 24.6879,
+    "http_error_rate": 0,
+    "business_error_rate": 0,
+    "business_rejected": 0,
+    "dropped": 0,
+    "orders_delta": 30001,
+    "items_delta": 30001,
+    "stock_delta": -30001,
+    "per_product_stock_mismatches": 0,
+    "consistent": true,
+    "final": {
+      "Products": 1000,
+      "Users": 25,
+      "Sessions": 25,
+      "Orders": 30252,
+      "OrderItems": 30252,
+      "CreatedOrders": 30252,
+      "CancelledOrders": 0,
+      "inventory_units": 999969748,
+      "NegativeInventory": 0,
+      "AmountMismatches": 0,
+      "OrdersWithoutItems": 0,
+      "OrphanItems": 0,
+      "DuplicateIdempotency": 0,
+      "valid": true
+    },
+    "runtime_before": {
+      "captured_at_utc": "2026-10-17T04:44:39.9052692Z",
+      "runtime": {
+        "goroutines": 11,
+        "heap_alloc_bytes": 15333032,
+        "heap_in_use_bytes": 16400384,
+        "stack_in_use_bytes": 917504,
+        "sys_bytes": 51742968,
+        "num_gc": 142,
+        "pause_total_ns": 4225500
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 3,
+        "in_use": 0,
+        "idle": 3,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 1,
+        "max_lifetime_closed": 4
+      }
+    },
+    "runtime_end": {
+      "captured_at_utc": "2026-10-17T04:54:41.6971639Z",
+      "runtime": {
+        "goroutines": 15,
+        "heap_alloc_bytes": 8283360,
+        "heap_in_use_bytes": 9363456,
+        "stack_in_use_bytes": 884736,
+        "sys_bytes": 51742968,
+        "num_gc": 285,
+        "pause_total_ns": 8460000
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 7,
+        "in_use": 0,
+        "idle": 7,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 1,
+        "max_lifetime_closed": 8
+      }
+    },
+    "runtime_cooldown": {
+      "captured_at_utc": "2026-10-17T04:55:16.4064188Z",
+      "runtime": {
+        "goroutines": 15,
+        "heap_alloc_bytes": 12577440,
+        "heap_in_use_bytes": 14876672,
+        "stack_in_use_bytes": 851968,
+        "sys_bytes": 51742968,
+        "num_gc": 286,
+        "pause_total_ns": 8460000
+      },
+      "database": {
+        "max_open_connections": 25,
+        "open_connections": 7,
+        "in_use": 0,
+        "idle": 7,
+        "wait_count": 0,
+        "wait_duration_ns": 0,
+        "max_idle_closed": 1,
+        "max_lifetime_closed": 8
+      }
+    },
+    "transactions": {
+      "enabled": true,
+      "reset_at_utc": "2026-10-17T04:44:39.1633571Z",
+      "captured_at_utc": "2026-10-17T04:54:41.6976687Z",
+      "series": [
+        {
+          "stage": "acquire_connection",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 27.8252,
+            "average_ms": 0.0009274757508083063,
+            "p50_ms": 0,
+            "p95_ms": 0,
+            "p99_ms": 0,
+            "max_ms": 0.6227
+          }
+        },
+        {
+          "stage": "begin_transaction",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 35609.6663,
+            "average_ms": 1.1869493116896102,
+            "p50_ms": 1.0673,
+            "p95_ms": 1.6044,
+            "p99_ms": 1.8764,
+            "max_ms": 9.6534
+          }
+        },
+        {
+          "stage": "commit",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 192918.5208,
+            "average_ms": 6.430403013232892,
+            "p50_ms": 5.7584,
+            "p95_ms": 11.0754,
+            "p99_ms": 14.1552,
+            "max_ms": 73.6203
+          }
+        },
+        {
+          "stage": "http_create_total",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 429010.4489,
+            "average_ms": 14.299871634278858,
+            "p50_ms": 13.2472,
+            "p95_ms": 18.9693,
+            "p99_ms": 22.7066,
+            "max_ms": 126.9402
+          }
+        },
+        {
+          "stage": "idempotency_lookup",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 40038.407,
+            "average_ms": 1.3345690810306323,
+            "p50_ms": 1.5484,
+            "p95_ms": 1.612,
+            "p99_ms": 2.0949,
+            "max_ms": 7.1344
+          }
+        },
+        {
+          "stage": "inventory_update",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 41926.8376,
+            "average_ms": 1.3975146695110163,
+            "p50_ms": 1.0688,
+            "p95_ms": 1.6121,
+            "p99_ms": 2.1407,
+            "max_ms": 100.6612
+          }
+        },
+        {
+          "stage": "order_header_insert",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 38918.74,
+            "average_ms": 1.2972480917302756,
+            "p50_ms": 1.072,
+            "p95_ms": 1.6125,
+            "p99_ms": 2.1031,
+            "max_ms": 6.3706
+          }
+        },
+        {
+          "stage": "order_item_insert",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 39290.3375,
+            "average_ms": 1.3096342621912604,
+            "p50_ms": 1.0758,
+            "p95_ms": 1.6109,
+            "p99_ms": 2.1058,
+            "max_ms": 10.3531
+          }
+        },
+        {
+          "stage": "product_read",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 37836.6572,
+            "average_ms": 1.2611798673377554,
+            "p50_ms": 1.0666,
+            "p95_ms": 1.6091,
+            "p99_ms": 1.8296,
+            "max_ms": 7.0342
+          }
+        },
+        {
+          "stage": "service_create_total",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 427657.1484,
+            "average_ms": 14.254763121229292,
+            "p50_ms": 13.2281,
+            "p95_ms": 18.9561,
+            "p99_ms": 22.6852,
+            "max_ms": 126.9402
+          }
+        },
+        {
+          "stage": "transaction_attempt",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 427153.4759,
+            "average_ms": 14.237974597513416,
+            "p50_ms": 13.223,
+            "p95_ms": 18.9499,
+            "p99_ms": 22.6852,
+            "max_ms": 126.9402
+          }
+        },
+        {
+          "stage": "validation_and_hash",
+          "outcome": "success",
+          "durations": {
+            "count": 30001,
+            "dropped_samples": 0,
+            "total_ms": 106.8885,
+            "average_ms": 0.003562831238958701,
+            "p50_ms": 0,
+            "p95_ms": 0,
+            "p99_ms": 0,
+            "max_ms": 1.6958
+          }
+        }
+      ],
+      "recorder_overhead": {
+        "count": 100000,
+        "dropped_samples": 260012,
+        "total_ms": 66.0523,
+        "average_ms": 0.000660523,
+        "p50_ms": 0,
+        "p95_ms": 0,
+        "p99_ms": 0,
+        "max_ms": 1.5591
+      },
+      "nested_durations_note": "http, service, transaction, and SQL stage durations are nested; do not add overlapping totals"
+    },
+    "row_waits": 137,
+    "row_wait_ms": 3516,
+    "deadlocks": 0
+  }
+]

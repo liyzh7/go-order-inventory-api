@@ -1,0 +1,10 @@
+{
+  "source_commit": "047bd10a15e049954ba0afa78716bcdea73e5887",
+  "formal_seconds": 15,
+  "requests": 751,
+  "rps": 50.01184201838471,
+  "p95_ms": 18.8093,
+  "p99_ms": 20.86405,
+  "consistent": true,
+  "per_product_stock_mismatches": 0
+}

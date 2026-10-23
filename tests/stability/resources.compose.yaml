@@ -1,0 +1,12 @@
+# Explicit opt-in limits for stage 10; stage 9 historical configuration is intact.
+services:
+  mysql:
+    cpus: 2
+    mem_limit: 2g
+    pids_limit: 256
+    command: ["--innodb-buffer-pool-size=268435456", "--max-connections=80", "--innodb-redo-log-capacity=268435456", "--binlog-expire-logs-seconds=3600", "--max-binlog-size=67108864"]
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "2"

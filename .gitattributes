@@ -1,0 +1,7 @@
+# Keep project text reproducible across Windows and Linux checkouts.
+* text=auto eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+
+# Preserve upstream notice bytes, including original whitespace and line endings.
+third_party/licenses/** -text -whitespace

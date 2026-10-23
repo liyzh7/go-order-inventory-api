@@ -1,0 +1,21 @@
+{
+  "initial": {
+    "source_commit": "d70d0cb4ce96b420df4c502bfb479144f2a62cf4",
+    "legacy_assertions_passed": true,
+    "restart_http_status": 500,
+    "accepted_as_final_delivery": false,
+    "evidence": "recovery-initial-summary.json"
+  },
+  "transport_classification_only": {
+    "source_commit": "5daa99800c3ed71d2acf1c91531cd5ccc0f2b645",
+    "strict_suite_passed": false,
+    "restart_http_status": 500,
+    "evidence_ignored_path": ".tmp/recovery-64e0ae45c175/tests.log"
+  },
+  "typed_rollback_failure_preserved": {
+    "source_commit": "047bd10a15e049954ba0afa78716bcdea73e5887",
+    "strict_suite_passed": true,
+    "restart_http_status": 503,
+    "evidence": "recovery-summary.json"
+  }
+}

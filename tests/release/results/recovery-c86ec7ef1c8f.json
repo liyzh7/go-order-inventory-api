@@ -1,0 +1,119 @@
+{
+  "source_commit": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+  "database": "order_api_recovery_c86ec7ef1c8f",
+  "actions": [
+    {
+      "action": "pause",
+      "start_utc": "2026-10-17T07:19:16.5643331Z",
+      "finish_utc": "2026-10-17T07:19:16.7610601Z"
+    },
+    {
+      "action": "resume",
+      "start_utc": "2026-10-17T07:19:20.2937169Z",
+      "finish_utc": "2026-10-17T07:19:20.4671890Z"
+    },
+    {
+      "action": "restart",
+      "start_utc": "2026-10-17T07:19:21.3625216Z",
+      "finish_utc": "2026-10-17T07:19:30.0959178Z"
+    }
+  ],
+  "events": [
+    {
+      "name": "database_pause",
+      "utc": "2026-10-17T07:19:16.38296454Z",
+      "elapsed_ms": 4110.67515,
+      "response_ms": 3003.922308,
+      "http_status": 503,
+      "error_code": "temporarily_unavailable",
+      "transport_error": false,
+      "detail": "3s database/auth deadline; same process recovered; one order created after resume"
+    },
+    {
+      "name": "SQL_trigger_rollback",
+      "utc": "2026-10-17T07:19:20.497146528Z",
+      "elapsed_ms": 42.976183,
+      "response_ms": 11.061035,
+      "http_status": 500,
+      "error_code": "internal_error",
+      "transport_error": false,
+      "detail": "second inventory UPDATE failed; header, two items and first deduction rolled back; retry succeeded"
+    },
+    {
+      "name": "client_context_cancellation",
+      "utc": "2026-10-17T07:19:20.542576379Z",
+      "elapsed_ms": 19.630598,
+      "response_ms": 5.2564,
+      "http_status": 0,
+      "error_code": "",
+      "transport_error": true,
+      "detail": "blocked request cancelled; no partial commit; same key safely retried"
+    },
+    {
+      "name": "client_deadline_200ms",
+      "utc": "2026-10-17T07:19:20.564019785Z",
+      "elapsed_ms": 217.762511,
+      "response_ms": 200.686174,
+      "http_status": 0,
+      "error_code": "",
+      "transport_error": true,
+      "detail": "client deadline expired; transaction rolled back; same key retry created once"
+    },
+    {
+      "name": "SIGTERM_inflight_and_restart",
+      "utc": "2026-10-17T07:19:20.784297401Z",
+      "elapsed_ms": 254.686075,
+      "response_ms": 3.018971,
+      "http_status": 200,
+      "error_code": "",
+      "transport_error": false,
+      "detail": "inflight request completed 201; exit code 0; original session valid; same key replayed"
+    },
+    {
+      "name": "SIGKILL_inflight_and_restart",
+      "utc": "2026-10-17T07:19:21.041123232Z",
+      "elapsed_ms": 125.611603,
+      "response_ms": 30.399493,
+      "http_status": 0,
+      "error_code": "",
+      "transport_error": true,
+      "detail": "connection ended; uncommitted header/items/deduction absent; session persisted; safe retry created once"
+    },
+    {
+      "name": "dedicated_MySQL_restart",
+      "utc": "2026-10-17T07:19:21.16888905Z",
+      "elapsed_ms": 8988.01391,
+      "response_ms": 1006.36783,
+      "http_status": 503,
+      "error_code": "temporarily_unavailable",
+      "transport_error": false,
+      "detail": "committed data and sessions survived; blocked transaction rolled back; same process recovered and retried once"
+    },
+    {
+      "name": "post_recovery_authorization_and_cancel",
+      "utc": "2026-10-17T07:19:30.158967386Z",
+      "elapsed_ms": 21.521574,
+      "response_ms": 2.867985,
+      "http_status": 200,
+      "error_code": "",
+      "transport_error": false,
+      "detail": "other user GET/cancel 404; repeat cancellation 200 without second replenishment"
+    },
+    {
+      "name": "final_database_invariants",
+      "utc": "2026-10-17T07:19:30.182898789Z",
+      "elapsed_ms": 0.001803,
+      "response_ms": 0,
+      "http_status": 200,
+      "error_code": "",
+      "transport_error": false,
+      "detail": "orders=8 items=9 stock_1=93 stock_2=199; all six invariants zero"
+    }
+  ],
+  "commit_injection_cases": [
+    "committed",
+    "not_committed",
+    "verification_unavailable"
+  ],
+  "passed": true
+}

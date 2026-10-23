@@ -1,0 +1,112 @@
+[
+  {
+    "minute": 1,
+    "max_heap_bytes": 36028864.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "0",
+    "row_wait_ms": "0",
+    "gc_count": "13",
+    "gc_pause_total_ns": "1149800",
+    "database_bytes": "1884160"
+  },
+  {
+    "minute": 2,
+    "max_heap_bytes": 3616640.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "0",
+    "row_wait_ms": "0",
+    "gc_count": "35",
+    "gc_pause_total_ns": "1810300",
+    "database_bytes": "3997696"
+  },
+  {
+    "minute": 3,
+    "max_heap_bytes": 4822896.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "0",
+    "row_wait_ms": "0",
+    "gc_count": "54",
+    "gc_pause_total_ns": "1810300",
+    "database_bytes": "7471104"
+  },
+  {
+    "minute": 4,
+    "max_heap_bytes": 5432216.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "1",
+    "row_wait_ms": "7",
+    "gc_count": "70",
+    "gc_pause_total_ns": "3921300",
+    "database_bytes": "8716288"
+  },
+  {
+    "minute": 5,
+    "max_heap_bytes": 6483616.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "2",
+    "row_wait_ms": "10",
+    "gc_count": "84",
+    "gc_pause_total_ns": "5557000",
+    "database_bytes": "8863744"
+  },
+  {
+    "minute": 6,
+    "max_heap_bytes": 6709384.0,
+    "max_goroutines": 41.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "9",
+    "row_wait_ms": "286",
+    "gc_count": "97",
+    "gc_pause_total_ns": "6608600",
+    "database_bytes": "13271040"
+  },
+  {
+    "minute": 7,
+    "max_heap_bytes": 6462776.0,
+    "max_goroutines": 41.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "9",
+    "row_wait_ms": "286",
+    "gc_count": "109",
+    "gc_pause_total_ns": "7169500",
+    "database_bytes": "14401536"
+  },
+  {
+    "minute": 8,
+    "max_heap_bytes": 8251432.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "10",
+    "row_wait_ms": "288",
+    "gc_count": "120",
+    "gc_pause_total_ns": "7691000",
+    "database_bytes": "16629760"
+  },
+  {
+    "minute": 9,
+    "max_heap_bytes": 8294224.0,
+    "max_goroutines": 37.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "11",
+    "row_wait_ms": "289",
+    "gc_count": "131",
+    "gc_pause_total_ns": "7691000",
+    "database_bytes": "17727488"
+  },
+  {
+    "minute": 10,
+    "max_heap_bytes": 9216576.0,
+    "max_goroutines": 39.0,
+    "pool_wait_count": "0",
+    "row_wait_count": "34",
+    "row_wait_ms": "380",
+    "gc_count": "141",
+    "gc_pause_total_ns": "8224600",
+    "database_bytes": "20905984"
+  }
+]

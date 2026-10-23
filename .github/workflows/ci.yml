@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GOTOOLCHAIN: local
+  CGO_ENABLED: "1"
+
+jobs:
+  unit:
+    name: Go checks and unit race tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Go from go.mod
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: true
+          cache-dependency-path: go.sum
+      - name: Check formatting, dependencies, vet, tests and unit race
+        run: bash scripts/test-ci-linux.sh unit
+
+  integration:
+    name: MySQL integration and integration race tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    # These are intentionally public, disposable CI-only credentials. No
+    # repository secrets or developer .env values are forwarded to this job.
+    env:
+      DB_HOST: 127.0.0.1
+      DB_NAME: order_api_ci
+      DB_USER: order_ci
+      DB_PASSWORD: ci-app-not-a-secret
+      MYSQL_ROOT_PASSWORD: ci-root-not-a-secret
+      TEST_MYSQL_HOST: 127.0.0.1
+    services:
+      mysql:
+        # Oracle's official MySQL Community 8.4 image, verified locally as 8.4.12.
+        image: container-registry.oracle.com/mysql/community-server@sha256:7dcc4add9183664de3a214daf85a50c3ba6cccfd7534f700b6561bf5b41885be
+        env:
+          MYSQL_DATABASE: order_api_ci
+          MYSQL_USER: order_ci
+          MYSQL_PASSWORD: ci-app-not-a-secret
+          MYSQL_ROOT_PASSWORD: ci-root-not-a-secret
+          MYSQL_ROOT_HOST: "%"
+          TZ: UTC
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd "MYSQL_PWD=ci-app-not-a-secret mysql --protocol=tcp -h 127.0.0.1 -u order_ci order_api_ci --batch --skip-column-names -e 'SELECT 1'"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 24
+          --health-start-period 30s
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Go from go.mod
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache: true
+          cache-dependency-path: go.sum
+      - name: Migrate and run MySQL tests with and without race detector
+        env:
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+          TEST_MYSQL_PORT: ${{ job.services.mysql.ports['3306'] }}
+        run: bash scripts/test-ci-linux.sh integration

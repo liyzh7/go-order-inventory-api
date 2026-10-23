@@ -1,0 +1,28 @@
+# Compiled binaries and test artifacts.
+/bin/
+*.exe
+*.test
+*.out
+coverage*.out
+*.prof
+
+# Local configuration and secrets.
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files.
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local runtime data and logs.
+.tmp/
+tmp/
+*.log
+tests/performance/results/raw/
+# Logical dumps contain password/session hashes even with synthetic accounts.
+/backups/
+*.sql.gz
+*.dump

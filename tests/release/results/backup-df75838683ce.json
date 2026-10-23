@@ -1,0 +1,171 @@
+{
+  "source_commit": "a3e41576be6029f637f45195c1e3dc33ad983ef0",
+  "source_snapshot_sha256": "af5e27ee16bd8eb73d65cfbbc04c940cde01df3b569cbccf991e46914a27cb53",
+  "run_id": "df75838683ce",
+  "mysql_image": "container-registry.oracle.com/mysql/community-server@sha256:7dcc4add9183664de3a214daf85a50c3ba6cccfd7534f700b6561bf5b41885be",
+  "go_image": "golang@sha256:5cf287a799e6b94384bad13d16b14904c531f51ba65792237e122ce42b392f61",
+  "tool_version": "mysqldump  Ver 8.4.12 for Linux on x86_64 (MySQL Community Server - GPL)",
+  "backup_start_utc": "2026-10-17T04:57:28.8074202Z",
+  "restore_start_utc": "2026-10-17T04:57:29.5582053Z",
+  "backup_ms": 534.7039,
+  "restore_ms": 543.8462,
+  "dump_bytes": 13579,
+  "dump_sha256": "316E62256552D6EB8BC2C265F923A273CEFC72FD8D4DC89300E12659A65641ED",
+  "validation": {
+    "before": {
+      "auth_sessions": {
+        "rows": 4,
+        "data_sha256": "f2b1d923c604f7b90927904bbf1cfbd6d48acc1b133ede627504152d76f0a70f",
+        "schema_sha256": "de7d4f602f902729a302d9dec4cae09badbffcba51f041b2c355f445108bff09"
+      },
+      "goose_db_version": {
+        "rows": 7,
+        "data_sha256": "f0c857bf27bf5793107db63c0cdefeb048eaba15ba90759cc051633e1b97b620",
+        "schema_sha256": "2ac99c01e1fd18f0fb893926056b95f4abb66366f7daf4731028a61fd74383d1"
+      },
+      "inventories": {
+        "rows": 3,
+        "data_sha256": "45e07f0acc34d8016906f298c7116805ec5752e7eb821a7bb93af2b5f7eb7da2",
+        "schema_sha256": "994b8c8f0967fc4e4303f602027693b1031945797b9d0d354f058754643fceb5"
+      },
+      "order_items": {
+        "rows": 4,
+        "data_sha256": "1981b1e52b0709c64d2635a2fb891cbc4fd21d9322b22c76eb0e551b0bc58e15",
+        "schema_sha256": "59ed35bf7c21fc03803228964b876cc5572fb947b7a47bbd52a81b98aed9575c"
+      },
+      "orders": {
+        "rows": 3,
+        "data_sha256": "29094dcf6f4cdf6793f107aafbfe3c0f5c1a26c6e355b5ff3f7a55defd192cdd",
+        "schema_sha256": "72721971d694b5e8a72c3096a8ba148b5e320c6354138738f2c1e4f0710dc37f"
+      },
+      "products": {
+        "rows": 3,
+        "data_sha256": "b3db0b97b583cfe6e90efea8102935528b72002e03216d0e5127b178bf70b331",
+        "schema_sha256": "5ba9976af331042948939c183123e1feae069d8b6ebb312c1804a3af208cb1c7"
+      },
+      "users": {
+        "rows": 2,
+        "data_sha256": "3fca287860435c2e1e50b571a6274f9abaa823921ad45cb2690678d5d5d69a3f",
+        "schema_sha256": "7dba8a89e65d4a70c0c66ac320c193bf20b0b5594569c142e898fb6e11081a9f"
+      }
+    },
+    "database": "order_api_backup_df75838683ce",
+    "database_version": "8.4.12",
+    "final": {
+      "auth_sessions": {
+        "rows": 4,
+        "data_sha256": "f2b1d923c604f7b90927904bbf1cfbd6d48acc1b133ede627504152d76f0a70f",
+        "schema_sha256": "de7d4f602f902729a302d9dec4cae09badbffcba51f041b2c355f445108bff09"
+      },
+      "goose_db_version": {
+        "rows": 7,
+        "data_sha256": "f0c857bf27bf5793107db63c0cdefeb048eaba15ba90759cc051633e1b97b620",
+        "schema_sha256": "2ac99c01e1fd18f0fb893926056b95f4abb66366f7daf4731028a61fd74383d1"
+      },
+      "inventories": {
+        "rows": 3,
+        "data_sha256": "d057c44d260c6a8c9baca928c5f61f52a07f9883063e9add4a9a7d78f51c91d2",
+        "schema_sha256": "994b8c8f0967fc4e4303f602027693b1031945797b9d0d354f058754643fceb5"
+      },
+      "order_items": {
+        "rows": 5,
+        "data_sha256": "6276dcf83abd6dcf1e3f280054692941a18d04bdd2f8770572e2fd8c325a0714",
+        "schema_sha256": "59ed35bf7c21fc03803228964b876cc5572fb947b7a47bbd52a81b98aed9575c"
+      },
+      "orders": {
+        "rows": 4,
+        "data_sha256": "87838c2d690b1a960eba12ee1c5fed3f8b14d18703e3e2d8e328ef3d99259614",
+        "schema_sha256": "52d7888daa14c47a98cdc2223c228ecc0501350d7d08092389cfbe7abd2d48b2"
+      },
+      "products": {
+        "rows": 3,
+        "data_sha256": "b3db0b97b583cfe6e90efea8102935528b72002e03216d0e5127b178bf70b331",
+        "schema_sha256": "5e650a889833a4d46592a41425ea4cfa0ead283e207e0c3232943e396855bbf9"
+      },
+      "users": {
+        "rows": 2,
+        "data_sha256": "3fca287860435c2e1e50b571a6274f9abaa823921ad45cb2690678d5d5d69a3f",
+        "schema_sha256": "7dba8a89e65d4a70c0c66ac320c193bf20b0b5594569c142e898fb6e11081a9f"
+      }
+    },
+    "http_statuses": {
+      "cancel_before_backup": 200,
+      "create_a": 201,
+      "create_b_same_key": 201,
+      "create_to_cancel": 201,
+      "cross_user_cancel": 404,
+      "cross_user_get": 404,
+      "expiring_login": 200,
+      "extra_login": 200,
+      "login_a": 200,
+      "login_b": 200,
+      "logout_before_backup": 200,
+      "register_a": 201,
+      "register_b": 201,
+      "restored_cancel_replay": 200,
+      "restored_create": 201,
+      "restored_expired": 401,
+      "restored_idempotency": 200,
+      "restored_me": 200,
+      "restored_new_cancel": 200,
+      "restored_new_cancel_replay": 200,
+      "restored_order": 200,
+      "restored_revoked": 401
+    },
+    "migration_version": 6,
+    "passed": true,
+    "restored": {
+      "auth_sessions": {
+        "rows": 4,
+        "data_sha256": "f2b1d923c604f7b90927904bbf1cfbd6d48acc1b133ede627504152d76f0a70f",
+        "schema_sha256": "de7d4f602f902729a302d9dec4cae09badbffcba51f041b2c355f445108bff09"
+      },
+      "goose_db_version": {
+        "rows": 7,
+        "data_sha256": "f0c857bf27bf5793107db63c0cdefeb048eaba15ba90759cc051633e1b97b620",
+        "schema_sha256": "2ac99c01e1fd18f0fb893926056b95f4abb66366f7daf4731028a61fd74383d1"
+      },
+      "inventories": {
+        "rows": 3,
+        "data_sha256": "45e07f0acc34d8016906f298c7116805ec5752e7eb821a7bb93af2b5f7eb7da2",
+        "schema_sha256": "994b8c8f0967fc4e4303f602027693b1031945797b9d0d354f058754643fceb5"
+      },
+      "order_items": {
+        "rows": 4,
+        "data_sha256": "1981b1e52b0709c64d2635a2fb891cbc4fd21d9322b22c76eb0e551b0bc58e15",
+        "schema_sha256": "59ed35bf7c21fc03803228964b876cc5572fb947b7a47bbd52a81b98aed9575c"
+      },
+      "orders": {
+        "rows": 3,
+        "data_sha256": "29094dcf6f4cdf6793f107aafbfe3c0f5c1a26c6e355b5ff3f7a55defd192cdd",
+        "schema_sha256": "72721971d694b5e8a72c3096a8ba148b5e320c6354138738f2c1e4f0710dc37f"
+      },
+      "products": {
+        "rows": 3,
+        "data_sha256": "b3db0b97b583cfe6e90efea8102935528b72002e03216d0e5127b178bf70b331",
+        "schema_sha256": "5ba9976af331042948939c183123e1feae069d8b6ebb312c1804a3af208cb1c7"
+      },
+      "users": {
+        "rows": 2,
+        "data_sha256": "3fca287860435c2e1e50b571a6274f9abaa823921ad45cb2690678d5d5d69a3f",
+        "schema_sha256": "7dba8a89e65d4a70c0c66ac320c193bf20b0b5594569c142e898fb6e11081a9f"
+      }
+    },
+    "scope": "logical InnoDB dump, fresh instance restore, real loopback HTTP through authenticated application router; no crash durability or disaster recovery guarantee",
+    "violations": {
+      "amount_mismatch": 0,
+      "duplicate_user_key": 0,
+      "invalid_owner": 0,
+      "inventory_fk": 0,
+      "inventory_mismatch": 0,
+      "inventory_unsigned": 0,
+      "negative_inventory": 0,
+      "orders_without_items": 0,
+      "orphan_items": 0,
+      "owner_fk": 0,
+      "sku_unique": 0,
+      "sku_uppercase": 0,
+      "user_key_unique": 0
+    }
+  }
+}
