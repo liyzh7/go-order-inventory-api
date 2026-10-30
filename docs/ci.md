@@ -1,10 +1,17 @@
 # 独立仓库 CI 设计与运行
 
-状态记录：2026-10-24（P7b）。[新展示仓库](https://github.com/liyzh7/go-order-inventory-api)已建立，仍为 **Private，尚未切换 Public**。P6 根提交 `9e40815202220dd919e3db485e38c1e53c0bdb99` 的[首次 CI Run 39962402403](https://github.com/liyzh7/go-order-inventory-api/actions/runs/39962402403)由 main push 触发，attempt=1，两个 Job 均 SUCCESS，Artifact=0。
+[展示仓库](https://github.com/liyzh7/go-order-inventory-api)的 [main 工作流](https://github.com/liyzh7/go-order-inventory-api/actions/workflows/ci.yml)由 README 动态 Badge 链接。Badge 显示 main 最近运行状态；准确的提交与测试结果以该 Run 的 Head SHA、事件、Job 和日志为准。
 
-上述结果只属于该根提交。本轮 P7b 仅本地 Markdown 文档提交、尚未 Push，**新文档提交尚无自身 SHA 的云端 CI 结果**；后续获授权 Push 后必须核验新 SHA 的自动运行，不能沿用旧 Run 作为新提交的通过证明。
+每次 Push 的 CI 结果必须独立核对，不能用旧 Run 作为其他提交的通过证明。以下是已核实且按 SHA 固定的历史证据，不替代动态 main 状态。
 
-## P6 实际云端结果
+## 已核实的历史云端结果
+
+| 阶段 | Head SHA | Run | 真实结果 |
+| --- | --- | --- | --- |
+| P6 首次同步 | `9e40815202220dd919e3db485e38c1e53c0bdb99` | [39962402403](https://github.com/liyzh7/go-order-inventory-api/actions/runs/39962402403) | push、attempt 1、两个 Job SUCCESS、Artifact 0 |
+| P7c 文档同步 | `5254eba5e91905f23f6f2e70b998339e49f6b827` | [40685338101](https://github.com/liyzh7/go-order-inventory-api/actions/runs/40685338101) | push、attempt 1、两个 Job SUCCESS、Artifact 0 |
+
+两次运行的测试口径均如下；下表 Job 链接固定为首次运行，后一次可从上表 Run 进入对应 Job。
 
 | Job | 普通测试 | Race | failed / skipped |
 | --- | --- | --- | --- |
@@ -23,7 +30,7 @@
 
 `integration` Job 启动无持久化 Volume 的临时 MySQL，随机映射宿主端口，使用明确公开的 `*-not-a-secret` 一次性测试值。入口不读取 .env；只迁移 `_ci` 基库，逐测试建立随机 `order_api_it_*` schema，执行集成 vet、普通集成与集成 Race。清理只处理各测试自行创建的精确 schema，退出 trap 另做只读残留断言。
 
-Artifact=0 不代表没有缓存：setup-go 使用标准 Go 模块/编译缓存。P7 API 列出一个缓存，归档字节未直接审计；不得把凭据、.env 或用户目录写入缓存。外部 Fork 审批策略与分支保护尚未验证为已启用；Private 下的套餐/API 限制与公开后维护设置要另行处理，不能从这两个成功 Job 推断规则已配置。
+Artifact=0 不代表没有缓存：setup-go 使用标准 Go 模块/编译缓存。P7 API 列出一个缓存，归档字节未直接审计；不得把凭据、.env 或用户目录写入缓存。外部 Fork 审批策略、分支保护及费用限制应单独读取实际仓库设置；套餐或可见性变化可能影响其可用性，不能从成功 Job 推断规则已配置。
 
 ## 本地复现入口
 
@@ -41,4 +48,4 @@ CGO_ENABLED=1 bash scripts/test-ci-linux.sh unit
 
 集成模式还需单独提供全新临时实例的 DB_*、TEST_MYSQL_* 与 MYSQL_ROOT_PASSWORD；不得复用开发库凭据。CI 凭据仅用于一次性实例，不是生产配置建议。
 
-P6 已实测该根提交的事件触发、Action 获取、镜像拉取、两组测试与缓存步骤；P7b 没有重跑这些步骤。长压测、备份和进程级恢复不进入默认 CI，本轮未重跑。CI 成功不代表生产上线或容量保证。
+上表历史 Run 已实测各自提交的事件触发、Action 获取、镜像拉取、两组测试与缓存步骤。长压测、备份和进程级恢复不进入默认 CI，不能从默认 CI 成功推断其已重跑。CI 成功不代表生产上线或容量保证。

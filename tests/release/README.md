@@ -31,4 +31,4 @@ Go 用例创建精确 `order_api_backup_<12位ID>` 模拟数据，真实注册/�
 
 独立备份用例使用 `backup && linux` build tag，不混入默认长 CI。常规 CI 的 MySQL/Race 仍复用原业务用例；本地运行不能代替 GitHub Actions 真实云端 Run。完整结论及未就绪条件见 `docs/release-readiness.md`。
 
-`cmd/release-audit` 依赖真实 Git 仓库；P1 源码快照阶段尚无 .git，当时未运行全历史入口。当前已建立独立展示仓库，P6 根提交的云端结果见 [CI 说明](../../docs/ci.md)；本轮 P7b 只作本地文档提交，未重跑该入口或备份/恢复实验。历史 results 仅为合成聚合验收记录，不是本轮新测试结果；新文档提交尚未 Push，也没有自身 SHA 的 CI。
+`cmd/release-audit` 依赖真实 Git 仓库；P1 源码快照阶段尚无 .git，当时未运行全历史入口。独立展示仓库的已核实云端结果见 [CI 说明](../../docs/ci.md)。全历史审查及备份/恢复实验需要另行执行和记录，不能从工具源码保留或默认 CI 成功推断其通过。历史 results 仅为注明受测版本的合成聚合验收记录，不冒充其他提交的新测试结果。

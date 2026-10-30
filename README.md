@@ -1,12 +1,14 @@
 # Order API — Go / Gin / MySQL 事务与并发项目
 
+[![CI](https://github.com/liyzh7/go-order-inventory-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/liyzh7/go-order-inventory-api/actions/workflows/ci.yml)
+
 Go + Gin + MySQL 8.4 的订单与库存单体后端，关注数据库事务中的库存竞争、用户级幂等、并发取消和失败后的结果核验，而不是堆叠中间件。
 
 这是用于学习与求职展示的本地工程项目：多个用户并发购买有限库存时，如何避免超卖、重复下单和重复取消回补。仅使用合成数据，不连接支付，未生产上线或提供公网服务。
 
-本项目是经过文件级审查的独立源码展示版本，不携带原项目 Git 历史。新仓库为 [liyzh7/go-order-inventory-api](https://github.com/liyzh7/go-order-inventory-api)。状态记录：2026-10-24（P7b），仓库仍为 **Private，尚未切换 Public**。P6 根提交 `9e40815202220dd919e3db485e38c1e53c0bdb99` 的[首次云端 CI](https://github.com/liyzh7/go-order-inventory-api/actions/runs/39962402403)两个 Job 均 SUCCESS。
+本项目是经过文件级审查的独立源码展示版本，不携带原项目 Git 历史。仓库为 [liyzh7/go-order-inventory-api](https://github.com/liyzh7/go-order-inventory-api)。上方动态 CI Badge 跟踪 `main` 分支；查看具体 Run 的 Head SHA 才能确定其验证的提交。
 
-该 Run 只验证上述根提交；本轮 Markdown 文档变更仅作本地提交、尚未 Push，**新文档提交尚无自身 SHA 对应的 GitHub CI 结果**。原私有项目的历史验收只作来源背景，不代替新仓库证据。项目采用 [MIT](LICENSE)，第三方许可见 [依赖声明](third_party/README.md)。
+已核实的历史运行包括根提交的 [P6 首次 CI](https://github.com/liyzh7/go-order-inventory-api/actions/runs/39962402403) 和文档提交的 [P7c CI](https://github.com/liyzh7/go-order-inventory-api/actions/runs/40685338101)，两次各两个 Job 均 SUCCESS；精确 SHA、统计和边界见 [CI 说明](docs/ci.md)。每次结果只证明该 Run 的提交和测试范围，原私有项目的历史验收不代替此仓库的证据。项目采用 [MIT](LICENSE)，第三方许可见 [依赖声明](third_party/README.md)。
 
 事务把订单头、明细快照与库存扣减作为一个整体提交；`available_qty >= quantity` 的条件更新和影响行数检查避免并发读后写造成超卖。用户与幂等键唯一约束配合请求摘要，让客户端在超时后以原键重试：同请求返回原订单，不同参数拒绝。并发测试同时核验订单数量、明细、金额与逐商品库存守恒。
 
@@ -124,13 +126,13 @@ go test -count=1 ./...
 ./scripts/test-backup-restore.ps1 # 新源/目标实例，逻辑备份恢复与认证 HTTP 验证
 ```
 
-Windows 原生 Race 需要 CGO/C 编译器；容器入口不修改全局环境。CI 仅执行格式、依赖、vet、单元/集成及两类 Race，权限 contents: read，无部署/发布。本地 Linux 验证与真实 GitHub Runner 结果分别记录；执行方式及 P6 根提交的真实云端结果见 [CI 说明](docs/ci.md)；本轮未重跑测试，新文档提交尚待后续获授权 Push 后独立运行 CI。
+Windows 原生 Race 需要 CGO/C 编译器；容器入口不修改全局环境。CI 仅执行格式、依赖、vet、单元/集成及两类 Race，权限 contents: read，无部署/发布。本地 Linux 验证与真实 GitHub Runner 结果分别记录；执行方式、已核实的云端记录和统计口径见 [CI 说明](docs/ci.md)。每次变更应以对应 Head SHA 的实际 Run 结果验收。
 
 Session 清理只手动执行，不自动调度。确认目标库后：go run ./cmd/session-cleanup -retention 168h -batch-size 500 -max-batches 100 -timeout 30s。仅清理超过保留期的失效 Session，不删用户/订单。限量 slog JSON 事件不记录密码、Token、Token 哈希、Authorization、正文或原始数据库错误，不是完整审计平台。见 [运维说明](docs/operations.md)。
 
 ## 验证状态与复现边界
 
-候选本地 P3 验收见 [候选验证说明](docs/candidate-validation.md)：67 项单元、67 项单元 Race、22 项 MySQL 集成和 22 项集成 Race 通过，均无失败或跳过。以下是 **P6 根提交**的独立云端统计，不能与本地计数混用：
+候选本地 P3 验收见 [候选验证说明](docs/candidate-validation.md)：67 项单元、67 项单元 Race、22 项 MySQL 集成和 22 项集成 Race 通过，均无失败或跳过。以下是 **P6 与 P7c 已核实运行**的独立云端统计，不能与本地计数混用：
 
 | 云端组 | 实际结果 |
 | --- | --- |
@@ -138,11 +140,11 @@ Session 清理只手动执行，不自动调度。确认目标库后：go run ./
 | MySQL integration and integration race tests | SUCCESS；普通集成与集成 Race 各 22 个顶层测试（各 37 个含子测试 PASS 事件），各失败 0、跳过 0 |
 | Artifact | 0；setup-go 依赖/构建缓存与 Artifact 是不同机制 |
 
-`.github/workflows/ci.yml` 不依赖原仓库 Secrets，也不执行部署或发布。当前仍为 Private；外部 Fork 审批及 main 保护规则未验证为已启用。当前没有将旧 Run 做成新文档提交的绿色徽章。完整证据、环境和未执行项见 [CI 说明](docs/ci.md)。
+`.github/workflows/ci.yml` 不依赖原仓库 Secrets，也不执行部署或发布。动态 Badge 显示 main 最近运行状态，不代表每个历史提交或未执行能力均通过。外部 Fork 审批及 main 保护规则应以仓库实际设置为准，不能从 CI 成功推断其已启用。完整证据、环境和未执行项见 [CI 说明](docs/ci.md)。
 
 普通测试中的受控 SQL driver 验证错误分支；`tests/integration` 在专用 MySQL 内验证真实事务、锁竞争、幂等、并发取消、授权与迁移。二者范围不同，普通测试通过不能替代数据库集成结果。`scripts/test-integration.ps1` 会读取本目录 `.env`，只适合你已明确配置的候选专用实例；优先使用创建全新实例的 `scripts/verify-ci-local.ps1`。
 
-开发 Compose 使用候选专属 `order-api-showcase` 资源名与 13307/28080 端口；性能实例使用 `order-api-showcase-perf` 与 13308/28081。不要将原项目 `.env` 复制过来。备份与恢复工具仅针对独立实例，运行前检查精确目标；本次未启动这些长实验。无 Git 的实验脚本以源码 SHA-256 记录版本。`cmd/release-audit` 的源码与测试保留，用于审查实际 Git 历史。无 `.git` 是 P1 源码快照阶段的历史状态；当前已建立独立仓库，本轮文档修订未重新执行全历史入口，原私库历史没有导入。
+开发 Compose 使用候选专属 `order-api-showcase` 资源名与 13307/28080 端口；性能实例使用 `order-api-showcase-perf` 与 13308/28081。不要将原项目 `.env` 复制过来。备份与恢复工具仅针对独立实例，运行前检查精确目标；这些长实验需单独执行并记录结果。无 Git 的实验脚本以源码 SHA-256 记录版本。`cmd/release-audit` 的源码与测试保留，用于审查实际 Git 历史。无 `.git` 是 P1 源码快照阶段的历史状态；独立仓库中的历史审查应对准确提交另行执行，不能用保留工具源码代替实际运行；原私库历史没有导入。
 
 ## 性能与可靠性证据
 
@@ -179,10 +181,10 @@ docs/                   设计、真实数据、失败记录、发布边界
 
 强制字面量回环地址监听；加入认证也不能通过代理、隧道或端口转发公开部署。未实现公网 TLS、MFA、密码找回、集中审计/限流、备份加密/轮转、PITR、多节点容灾。优先补齐部署安全和可重复容量验证，不把引入 Redis 当作必要目标。
 
-维护规则见 [SECURITY.md](SECURITY.md)、[CONTRIBUTING.md](CONTRIBUTING.md)。项目代码采用 [MIT](LICENSE)；第三方条款仍独立适用，见 [来源说明](docs/open-source-references.md) 与 [依赖声明](third_party/README.md)。未复制参考项目业务源码，不冒充他人成果。后续分支或 Tag 推送、公开仓库和发布 Release 均需维护者单独授权。
+维护规则见 [SECURITY.md](SECURITY.md)、[CONTRIBUTING.md](CONTRIBUTING.md)。项目代码采用 [MIT](LICENSE)；第三方条款仍独立适用，见 [来源说明](docs/open-source-references.md) 与 [依赖声明](third_party/README.md)。未复制参考项目业务源码，不冒充他人成果。分支、Tag、Release 和仓库权限由维护者按实际变更范围审查；源码公开不代表发布生产服务或二进制制品。
 
 ## Go module 与仓库地址
 
 当前 `module internshiplab/order-api` 与所有内部 import 一致，已在新展示仓库的 P6 CI 中构建和测试通过；从仓库检出后可在项目根目录构建。仓库地址已确定为 `github.com/liyzh7/go-order-inventory-api`，保留现有 module 不妨碍该构建方式，但该本地式路径不是供外部用户按 GitHub 地址 `go get` 的规范模块路径。
 
-若以后需要将项目作为外部模块分发，可另行批准改为 `github.com/liyzh7/go-order-inventory-api`，同步所有自引用 import 并重新执行格式、vet、单元、Race 与集成验收。本阶段只修正文档，不修改 go.mod 或 import。
+若以后需要将项目作为外部模块分发，可另行批准改为 `github.com/liyzh7/go-order-inventory-api`，同步所有自引用 import 并重新执行格式、vet、单元、Race 与集成验收。模块路径变更与文档维护分开审查；现有 go.mod 与 import 保持一致。
